@@ -1,0 +1,43 @@
+
+def apply_coupons(cart, coupons)
+  coupons.each do |item|
+    item_count_cart = cart[item.values[0]][:count] / coupons[0][:num]
+    if cart[item.values[0]]
+      cart[item.values[0] + " W/COUPON"] = {
+        #count: cart[item.values[0]][:count] ,
+        count: coupons[0][:num] * item_count_cart,
+        price: coupons[0][:cost] / coupons[0][:num],
+        clearance: cart[item.values[0]][:clearance]
+      }
+       cart[item.values[0]][:count] -= cart[item.values[0] + " W/COUPON"][:count]
+  end
+end
+  cart
+end
+
+
+
+
+def apply_coupons(cart, coupons)
+  
+  coupons.each do |item|
+    
+    item_count_cart = cart[item.values[0]][:count] / coupons[0][:num]
+    
+      
+      if cart[item.values[0]][:count] >= coupons[0][:num]
+        item_coupon = item.values[0] + " W/COUPON"
+        
+        cart[item_coupon] = {
+          count: coupons[0][:num] * item_count_cart,
+          price: coupons[0][:cost] / coupons[0][:num],
+          clearance: cart[item.values[0]][:clearance]
+        }
+        
+        cart[item.values[0]][:count] -= cart[item_coupon][:count]
+      end 
+    
+
+end
+  cart
+end
