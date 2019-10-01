@@ -58,6 +58,8 @@ describe "Grocer" do
       end
 
       it "adds a new key, value pair to the cart hash called 'ITEM NAME W/COUPON'" do
+        puts "HERE"
+        puts @avocado_result
         expect(@avocado_result.keys).to include("AVOCADO W/COUPON")
       end
 
@@ -159,6 +161,7 @@ describe "Grocer" do
       consolidated_cart = consolidate_cart(cart)
 
       result = apply_clearance(consolidated_cart)
+      puts result
       expect(result["TEMPEH"][:price]).to eq(2.40)
     end
 
